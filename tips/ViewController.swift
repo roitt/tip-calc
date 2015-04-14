@@ -49,11 +49,9 @@ class ViewController: UIViewController {
         var billAmt = (billField.text as NSString).doubleValue;
         var tipAmt = billAmt * tipPercentage;
         var totalAmt = billAmt + tipAmt;
-        tipLabel.text = "$\(tipAmt)";
-        totalLabel.text = "$\(totalAmt)";
         
-        tipLabel.text = String(format: "%.2f", tipAmt)
-        totalLabel.text = String(format: "%.2f", totalAmt)
+        tipLabel.text = "$" + String(format: "%.2f", tipAmt)
+        totalLabel.text = "$" + String(format: "%.2f", totalAmt)
     }
     
     @IBAction func onTap(sender: AnyObject) {
