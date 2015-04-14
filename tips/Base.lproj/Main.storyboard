@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14C1514" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14C1514" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="hZx-Yi-tT0">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--TipCal-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
                 <viewController id="vXZ-lx-hvc" customClass="ViewController" customModule="tips" customModuleProvider="target" sceneMemberID="viewController">
@@ -59,11 +59,13 @@
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" id="DbY-ai-QJG">
                                 <rect key="frame" x="26" y="312" width="267" height="29"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.68376933350000002" green="1" blue="0.73989910930000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <segments>
                                     <segment title="15%"/>
                                     <segment title="18%"/>
                                     <segment title="20%"/>
                                 </segments>
+                                <color key="tintColor" red="0.02435024958" green="0.59402619950000002" blue="0.0010870258689999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
                                     <action selector="onEditingChanged:" destination="vXZ-lx-hvc" eventType="valueChanged" id="UDh-50-UeN"/>
                                 </connections>
@@ -75,6 +77,14 @@
                             <outletCollection property="gestureRecognizers" destination="6HK-rr-z3P" appends="YES" id="0NF-eL-6yB"/>
                         </connections>
                     </view>
+                    <navigationItem key="navigationItem" title="TipCal" id="jWC-LN-HiR">
+                        <barButtonItem key="rightBarButtonItem" title="Settings" id="NiP-xU-l5m">
+                            <color key="tintColor" red="0.02435024958" green="0.59402619950000002" blue="0.0010870258689999999" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <segue destination="TWZ-Vn-fEm" kind="modal" identifier="settingsSeque" modalTransitionStyle="flipHorizontal" id="15h-bx-v5P"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="billField" destination="c0m-8g-lAE" id="jMF-zs-Noj"/>
                         <outlet property="tipControl" destination="DbY-ai-QJG" id="e1L-td-Pwk"/>
@@ -89,7 +99,91 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
+            <point key="canvasLocation" x="756" y="343"/>
+        </scene>
+        <!--Settings-->
+        <scene sceneID="TEI-Es-Owy">
+            <objects>
+                <viewController id="bSd-UP-dmK" customClass="SettingsViewController" customModule="tips" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="vWg-1V-mKH">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Default Tip Percentage" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="01b-0S-g7x">
+                                <rect key="frame" x="16" y="87" width="175" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="18"/>
+                                <color key="textColor" red="0.02435024958" green="0.59402619950000002" blue="0.0010870258689999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" id="R8I-Pq-bxL">
+                                <rect key="frame" x="16" y="125" width="288" height="29"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.71225212963182483" green="1" blue="0.67509738731971392" alpha="1" colorSpace="calibratedRGB"/>
+                                <segments>
+                                    <segment title="15%"/>
+                                    <segment title="18%"/>
+                                    <segment title="20%"/>
+                                </segments>
+                                <connections>
+                                    <action selector="onDefaultTipChanged:" destination="bSd-UP-dmK" eventType="valueChanged" id="sto-UH-qzx"/>
+                                </connections>
+                            </segmentedControl>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="tintColor" red="0.024350249577690962" green="0.5940261994949495" blue="0.0010870258690266752" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Settings" id="1yJ-mz-Nrh">
+                        <barButtonItem key="leftBarButtonItem" title="Done" style="done" id="Ndg-db-kF4">
+                            <color key="tintColor" red="0.02435024958" green="0.59402619950000002" blue="0.0010870258689999999" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="onDoneClick:" destination="bSd-UP-dmK" id="i03-pI-3zn"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="defaultTipControl" destination="R8I-Pq-bxL" id="71d-uY-IkL"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="adD-tq-onH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1671" y="343"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="6c1-nr-u67">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="hZx-Yi-tT0" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="EYZ-Eo-3kg">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="vXZ-lx-hvc" kind="relationship" relationship="rootViewController" id="c2q-b7-Bzk"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wBe-1z-96C" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
             <point key="canvasLocation" x="224" y="343"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="0Ri-bq-708">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="TWZ-Vn-fEm" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Gt0-dA-Erg">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="bSd-UP-dmK" kind="relationship" relationship="rootViewController" id="VaG-Un-WUe"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Mal-qz-PBv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1139" y="343"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
