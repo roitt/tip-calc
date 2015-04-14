@@ -9,16 +9,24 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    let selectedSegmentIndex = "SelectedSegmentIndex"
     @IBOutlet weak var tipControl: UISegmentedControl!
     @IBOutlet weak var billField: UITextField!
     @IBOutlet weak var tipLabel: UILabel!
     @IBOutlet weak var totalLabel: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        // Initialization.
         tipLabel.text = "$0.00";
         totalLabel.text = "$0.00"
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        // Get the default selected segment index from NSUserDefaults and set it here.
+        var defaults = NSUserDefaults.standardUserDefaults()
+        var intValue = defaults.integerForKey(selectedSegmentIndex)
+        tipControl.selectedSegmentIndex = intValue
     }
 
     override func didReceiveMemoryWarning() {
