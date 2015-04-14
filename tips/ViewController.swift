@@ -28,6 +28,11 @@ class ViewController: UIViewController {
         var intValue = defaults.integerForKey(selectedSegmentIndex)
         tipControl.selectedSegmentIndex = intValue
     }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        updateFields()
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -35,6 +40,10 @@ class ViewController: UIViewController {
     }
 
     @IBAction func onEditingChanged(sender: AnyObject) {
+        updateFields()
+    }
+    
+    func updateFields() {
         var tipPercentages = [0.15, 0.18, 0.20];
         var tipPercentage = tipPercentages[tipControl.selectedSegmentIndex]
         var billAmt = (billField.text as NSString).doubleValue;
